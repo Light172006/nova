@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1100" width="100%" height="100%" style="background-color: #ffffff; font-family: system-ui, -apple-system, sans-serif;">
+    <defs>
+        <!-- Drop Shadow for clean, modern look -->
+        <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+            <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.08"/>
+        </filter>
+
+        <!-- Arrowheads -->
+        <marker id="arrow-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+        </marker>
+
+        <!-- Reverse Arrowhead for bidirectional lines -->
+        <marker id="arrow-gray-rev" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 10 0 L 0 5 L 10 10 z" fill="#64748b" />
+        </marker>
+
+        <!-- Light Gray Arrowhead for dashed log paths -->
+        <marker id="arrow-light-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8" />
+        </marker>
+
+        <!-- Amber Arrowhead -->
+        <marker id="arrow-amber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706" />
+        </marker>
+
+        <!-- Blue Arrowhead -->
+        <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
+        </marker>
+
+        <!-- Purple Arrowhead -->
+        <marker id="arrow-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b5cf6" />
+        </marker>
+    </defs>
+
+    <!-- ==================== PATHS & CONNECTIONS ==================== -->
+
+    <!-- Voice to STT -->
+    <line x1="600" y1="90" x2="600" y2="130" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+    
+    <!-- STT to Nova -->
+    <line x1="600" y1="190" x2="600" y2="240" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+
+    <!-- Nova to Agent Bus (Solid Gray) -->
+    <line x1="600" y1="330" x2="600" y2="355" stroke="#64748b" stroke-width="2"/>
+    <line x1="200" y1="355" x2="1000" y2="355" stroke="#64748b" stroke-width="2"/>
+    
+    <!-- Bus to Agents (Bidirectional) -->
+    <line x1="200" y1="355" x2="200" y2="390" stroke="#64748b" stroke-width="2" marker-start="url(#arrow-gray-rev)" marker-end="url(#arrow-gray)"/>
+    <line x1="400" y1="355" x2="400" y2="390" stroke="#64748b" stroke-width="2" marker-start="url(#arrow-gray-rev)" marker-end="url(#arrow-gray)"/>
+    <line x1="600" y1="355" x2="600" y2="390" stroke="#64748b" stroke-width="2" marker-start="url(#arrow-gray-rev)" marker-end="url(#arrow-gray)"/>
+    <line x1="800" y1="355" x2="800" y2="390" stroke="#64748b" stroke-width="2" marker-start="url(#arrow-gray-rev)" marker-end="url(#arrow-gray)"/>
+    <line x1="1000" y1="355" x2="1000" y2="390" stroke="#64748b" stroke-width="2" marker-start="url(#arrow-gray-rev)" marker-end="url(#arrow-gray)"/>
+
+    <!-- Agents to Activity Log (Dashed Gray) -->
+    <line x1="230" y1="480" x2="230" y2="510" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-light-gray)"/>
+    <line x1="400" y1="480" x2="400" y2="510" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-light-gray)"/>
+    <line x1="600" y1="480" x2="600" y2="510" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-light-gray)"/>
+    <line x1="800" y1="480" x2="800" y2="510" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-light-gray)"/>
+    <line x1="1000" y1="480" x2="1000" y2="510" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-light-gray)"/>
+    
+    <!-- Activity Log Bus and Connection -->
+    <line x1="230" y1="510" x2="1000" y2="510" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4"/>
+    <line x1="600" y1="510" x2="600" y2="550" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-light-gray)"/>
+
+    <!-- Activity Log to Nova (Dashed Amber) -->
+    <path d="M 680 600 L 1140 600 L 1140 285 L 860 285" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow-amber)"/>
+    <text x="1000" y="275" font-size="12" fill="#d97706" text-anchor="middle">Nova reads week + month summaries at boot</text>
+
+    <!-- Chat Agent to TTS (Blue) -->
+    <line x1="170" y1="480" x2="170" y2="550" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+    <!-- TTS to Speaker (Gray) -->
+    <line x1="200" y1="610" x2="200" y2="650" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-gray)"/>
+
+    <!-- Chat Agent to Conversational Memory (Purple) -->
+    <path d="M 125 435 L 60 435 L 60 800 L 105 800" fill="none" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrow-purple)"/>
+
+
+    <!-- ==================== NODES ==================== -->
+
+    <!-- Your Voice -->
+    <rect x="500" y="30" width="200" height="60" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="2" filter="url(#shadow)"/>
+    <text x="600" y="52" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle">Your voice</text>
+    <text x="600" y="72" font-size="13" fill="#3b82f6" text-anchor="middle">mic input</text>
+
+    <!-- Speech to Text -->
+    <rect x="500" y="130" width="200" height="60" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="2" filter="url(#shadow)"/>
+    <text x="600" y="152" font-size="15" font-weight="600" fill="#1e3a8a" text-anchor="middle">Speech to text</text>
+    <text x="600" y="172" font-size="13" fill="#3b82f6" text-anchor="middle">Whisper, local</text>
+
+    <!-- Nova Orchestrator -->
+    <rect x="350" y="240" width="500" height="90" rx="10" fill="#fffbeb" stroke="#fcd34d" stroke-width="2" filter="url(#shadow)"/>
+    <text x="600" y="268" font-size="17" font-weight="700" fill="#92400e" text-anchor="middle">Nova — orchestrator</text>
+    <text x="600" y="288" font-size="13" fill="#b45309" text-anchor="middle">Same LLM as the chat agent, different role:</text>
+    <text x="600" y="306" font-size="13" fill="#b45309" text-anchor="middle">reasons about the input, builds a plan,</text>
+    <text x="600" y="324" font-size="13" fill="#b45309" text-anchor="middle">calls agents as tools — single step or chained</text>
+
+    <!-- Agents Row -->
+    <!-- Chat / Voice Agent -->
+    <rect x="125" y="390" width="150" height="90" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="416" font-size="14" font-weight="600" fill="#064e3b" text-anchor="middle">Chat / voice</text>
+    <text x="200" y="434" font-size="14" font-weight="600" fill="#064e3b" text-anchor="middle">agent</text>
+    <text x="200" y="454" font-size="12" fill="#059669" text-anchor="middle">direct answers +</text>
+    <text x="200" y="470" font-size="12" fill="#059669" text-anchor="middle">narrates other agents</text>
+
+    <!-- Automation Agent -->
+    <rect x="325" y="390" width="150" height="90" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="2" filter="url(#shadow)"/>
+    <text x="400" y="416" font-size="14" font-weight="600" fill="#064e3b" text-anchor="middle">Automation</text>
+    <text x="400" y="434" font-size="14" font-weight="600" fill="#064e3b" text-anchor="middle">agent</text>
+    <text x="400" y="454" font-size="12" fill="#059669" text-anchor="middle">OS actions,</text>
+    <text x="400" y="470" font-size="12" fill="#059669" text-anchor="middle">opens apps</text>
+
+    <!-- Browsing Agent -->
+    <rect x="525" y="390" width="150" height="90" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="2" filter="url(#shadow)"/>
+    <text x="600" y="416" font-size="14" font-weight="600" fill="#064e3b" text-anchor="middle">Browsing</text>
+    <text x="600" y="434" font-size="14" font-weight="600" fill="#064e3b" text-anchor="middle">agent</text>
+    <text x="600" y="454" font-size="12" fill="#059669" text-anchor="middle">Playwright /</text>
+    <text x="600" y="470" font-size="12" fill="#059669" text-anchor="middle">browser-use</text>
+
+    <!-- Writer / Scribe Agent -->
+    <rect x="725" y="390" width="150" height="90" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="2" filter="url(#shadow)"/>
+    <text x="800" y="416" font-size="14" font-weight="600" fill="#064e3b" text-anchor="middle">Writer / scribe</text>
+    <text x="800" y="434" font-size="14" font-weight="600" fill="#064e3b" text-anchor="middle">agent</text>
+    <text x="800" y="454" font-size="12" fill="#059669" text-anchor="middle">summarizing,</text>
+    <text x="800" y="470" font-size="12" fill="#059669" text-anchor="middle">emails, logs</text>
+
+    <!-- Coding Agent -->
+    <rect x="925" y="390" width="150" height="90" rx="8" fill="#f0fdf4" stroke="#86efac" stroke-width="2" filter="url(#shadow)"/>
+    <text x="1000" y="416" font-size="14" font-weight="600" fill="#064e3b" text-anchor="middle">Coding</text>
+    <text x="1000" y="434" font-size="14" font-weight="600" fill="#064e3b" text-anchor="middle">agent</text>
+    <text x="1000" y="454" font-size="12" fill="#059669" text-anchor="middle">wraps Aider</text>
+    <text x="1000" y="470" font-size="12" fill="#059669" text-anchor="middle">or similar</text>
+
+    <!-- Activity Log -->
+    <rect x="520" y="550" width="160" height="110" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" filter="url(#shadow)"/>
+    <text x="600" y="574" font-size="14" font-weight="700" fill="#334155" text-anchor="middle">Activity log</text>
+    <text x="600" y="594" font-size="12" fill="#64748b" text-anchor="middle">day.jsonl</text>
+    <text x="600" y="612" font-size="12" fill="#64748b" text-anchor="middle">week summary</text>
+    <text x="600" y="630" font-size="12" fill="#64748b" text-anchor="middle">month summary</text>
+    <text x="600" y="648" font-size="11" fill="#94a3b8" text-anchor="middle">every agent writes here</text>
+
+    <!-- Text to Speech -->
+    <rect x="120" y="550" width="160" height="60" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="572" font-size="14" font-weight="600" fill="#1e3a8a" text-anchor="middle">Text to speech</text>
+    <text x="200" y="592" font-size="12" fill="#3b82f6" text-anchor="middle">Piper / Coqui, local</text>
+
+    <!-- Speaker -->
+    <rect x="120" y="650" width="160" height="60" rx="8" fill="#eff6ff" stroke="#93c5fd" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="672" font-size="14" font-weight="600" fill="#1e3a8a" text-anchor="middle">Speaker</text>
+    <text x="200" y="692" font-size="12" fill="#3b82f6" text-anchor="middle">you hear it</text>
+
+    <!-- Conversational Memory -->
+    <rect x="110" y="750" width="180" height="90" rx="8" fill="#faf5ff" stroke="#d8b4fe" stroke-width="2" filter="url(#shadow)"/>
+    <text x="200" y="774" font-size="14" font-weight="700" fill="#581c87" text-anchor="middle">Conversational memory</text>
+    <text x="200" y="794" font-size="12" fill="#9333ea" text-anchor="middle">Chroma / pgvector</text>
+    <text x="200" y="812" font-size="12" fill="#9333ea" text-anchor="middle">semantic recall of</text>
+    <text x="200" y="830" font-size="12" fill="#9333ea" text-anchor="middle">past conversations</text>
+
+
+    <!-- ==================== EXAMPLE CHAIN ==================== -->
+    
+    <!-- Dashed Wrapper Container -->
+    <rect x="100" y="880" width="1000" height="130" rx="10" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="8,6" />
+    
+    <!-- Cutout background for Title -->
+    <rect x="420" y="865" width="360" height="30" fill="#ffffff"/>
+    <text x="600" y="885" font-size="15" font-weight="700" fill="#0369a1" text-anchor="middle">Example chain — "what's today's political status"</text>
+
+    <!-- Example Arrows -->
+    <line x1="410" y1="950" x2="490" y2="950" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow-blue)"/>
+    <line x1="710" y1="950" x2="790" y2="950" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow-blue)"/>
+
+    <!-- Example Node: Browsing -->
+    <rect x="230" y="920" width="180" height="60" rx="8" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="2" filter="url(#shadow)"/>
+    <text x="320" y="942" font-size="14" font-weight="600" fill="#075985" text-anchor="middle">Browsing agent</text>
+    <text x="320" y="962" font-size="12" fill="#0284c7" text-anchor="middle">fetches the web</text>
+
+    <!-- Example Node: Writer -->
+    <rect x="510" y="920" width="180" height="60" rx="8" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="2" filter="url(#shadow)"/>
+    <text x="600" y="942" font-size="14" font-weight="600" fill="#075985" text-anchor="middle">Writer agent</text>
+    <text x="600" y="962" font-size="12" fill="#0284c7" text-anchor="middle">summarizes it</text>
+
+    <!-- Example Node: Chat -->
+    <rect x="810" y="920" width="180" height="60" rx="8" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="2" filter="url(#shadow)"/>
+    <text x="900" y="942" font-size="14" font-weight="600" fill="#075985" text-anchor="middle">Chat / voice agent</text>
+    <text x="900" y="962" font-size="12" fill="#0284c7" text-anchor="middle">speaks it back to you</text>
+
+
+    <!-- ==================== LEGEND ==================== -->
+    <text x="600" y="1060" font-size="12" fill="#64748b" text-anchor="middle">
+        solid gray = Nova calling / receiving from an agent <tspan fill="#cbd5e1" font-weight="bold"> · </tspan> 
+        dashed gray = agents writing the activity log <tspan fill="#cbd5e1" font-weight="bold"> · </tspan> 
+        dashed amber = Nova reading memory at boot <tspan fill="#cbd5e1" font-weight="bold"> · </tspan> 
+        blue = the fixed example chain <tspan fill="#cbd5e1" font-weight="bold"> · </tspan> 
+        purple = chat agent's conversational memory
+    </text>
+
+</svg>
