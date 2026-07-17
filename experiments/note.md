@@ -1,16 +1,19 @@
-**base model :** 
-can perform the following tasks :
-            
-1. **Writing:** : help you write stories, poems, emails, articles, and more.
-2. **Research:**  I can gather information on various topics and summarize it for you.
-3. **Brainstorming:** Need ideas for a project? I can help. 
-4. **Translation:** I can translate between many languages.
-5. **Conversation:** I can have a conversation on various topics, even if it's just for fun.
+# Experiment Notes
 
-**persona_prompt_v1 :**
+## Baseline model (no prompt engineering)
+Capabilities observed out of the box:
+- Writing: stories, poems, emails, articles
+- Research: gathers and summarizes information on a topic
+- Brainstorming: generates ideas on request
+- Translation: handles multiple languages
+- Conversation: general chit-chat, no strong personality
 
-this model is acts like a personal assistant with a distinct persona.
+Verdict: competent generalist, but flat — no distinct voice, feels like a default assistant.
 
-**persona_prompt_v2 :**
+## persona_prompt_v1
+Gave the model a personal-assistant persona.
+Verdict: it feels forced
 
-The model is behaving as a professional asistant with proper style of output and behavior.
+## persona_prompt_v2
+Adjusted to a professional-assistant tone, with more defined style and behavior.
+Verdict: now the tone feels natural
