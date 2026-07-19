@@ -1,5 +1,6 @@
 import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
+from voice.stt import STT
 
 # Swap this for whichever Gemma checkpoint you're testing.
 # "google/gemma-2-2b-it"   -> Gemma 2, 2B, instruction-tuned (closest match to "gemma 2B")
@@ -12,9 +13,17 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 def load_model():
     print(f"Loading {MODEL_NAME} on {DEVICE} ...")
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+    
+    # Define the quantization configuration
+    quant_config = BitsAndBytesConfig(
+        load_in_4bit=True,
+        bnb_4bit_compute_dtype=torch.bfloat16,
+        bnb_4bit_quant_type="nf4"
+    )
+
     model = AutoModelForCausalLM.from_pretrained(
         MODEL_NAME,
-        dtype=torch.bfloat16 if DEVICE == "cuda" else torch.float32,
+        quantization_config=quant_config,
         device_map="auto" if DEVICE == "cuda" else None,
     )
     if DEVICE == "cpu":
@@ -84,8 +93,10 @@ def main():
     
     print(f"Nova: {reply_f}\n")
 
+    stt = STT()
+
     while True:
-        user_input = input("You: ").strip()
+        user_input = input('You: ')
 
         if user_input.lower() == "exit":
             break
@@ -98,6 +109,11 @@ def main():
             continue
         if not user_input:
             continue
+
+        if user_input == 'record':
+            #audio = stt.record_until_silence()
+            user_input = stt.listen()
+            print(user_input)
 
         # Add the user's turn to the context window
         context_window["history"].append({"role": "user", "content": user_input})
