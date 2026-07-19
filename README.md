@@ -34,8 +34,8 @@ Full diagram: [`docs/nova-architecture.svg`](docs/nova-architecture.svg)
 
 Actively being built, evenings and weekends. This section will be kept honest as things progress — no claiming something works before it does.
 
-- [✅] Chat agent — text-only, with persona and conversational memory
-- [✅] Voice I/O (STT/TTS)
+- [x] Chat agent — text-only, with persona and conversational memory
+- [x] Voice I/O (STT/TTS)
 - [ ] Nova orchestrator — routing and planning
 - [ ] Automation agent
 - [ ] Activity log (day/week/month)
