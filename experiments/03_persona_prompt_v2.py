@@ -1,6 +1,7 @@
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from voice.stt import STT
+from voice.tts import TextToSpeech
 
 # Swap this for whichever Gemma checkpoint you're testing.
 # "google/gemma-2-2b-it"   -> Gemma 2, 2B, instruction-tuned (closest match to "gemma 2B")
@@ -90,10 +91,13 @@ def main():
     reply_f = 'At your service sir.'
     
     context_window["history"].append({"role": "assistant", "content": reply_f})
-    
-    print(f"Nova: {reply_f}\n")
 
     stt = STT()
+    tts = TextToSpeech(model_path="voice/models/en_US-libritts-high.onnx")
+
+
+    print(f"Nova: {reply_f}\n")
+    tts.speak(reply_f,speaker_id=650)
 
     while True:
         user_input = input('You: ')
@@ -125,6 +129,8 @@ def main():
         context_window["history"].append({"role": "assistant", "content": reply})
 
         print(f"Nova: {reply}\n")
+        reply = reply.replace('*',"")
+        tts.speak(reply,speaker_id=650)
 
 
 if __name__ == "__main__":
