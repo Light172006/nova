@@ -46,7 +46,7 @@ Actively being built, evenings and weekends. This section will be kept honest as
 
 ## Tech stack
 
-- **Chat model:** Qwen3-1.7B, QLoRA fine-tuned (if prompting alone isn't enough for the persona)
+- **Chat model:** Gemma4 E2B, QLoRA fine-tuned (if prompting alone isn't enough for the persona)
 - **Conversational memory:** Chroma / pgvector
 - **Activity memory:** JSON Lines log files, filesystem-based
 - **STT:** Whisper (local)
